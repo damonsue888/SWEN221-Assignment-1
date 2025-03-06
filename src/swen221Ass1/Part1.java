@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import java.util.List;
+
+
 class Part1 {
 
   //This two tests check that creating those GeoPoints
@@ -136,15 +139,27 @@ class Part1 {
   }
 
   // Own Tests
-  @Test void one() {
-    var a= new GeoPoint(0d, 30d);
-    var b= new GeoPoint(0d, -120d);
-    assertEquals(new GeoPoint(0d,-45d), a.average(b));
+  @Test void tests() {
+    List<List<Double>> list = List.of(List.of(30d, -120d, -45d),
+            List.of(60d, -150d, 135d),
+            List.of(-60d, 150d, -135d),
+            List.of(50.2d, -171.0d, 119.6d),
+            List.of(-81.0d, -99.6d, -90.3d),
+            List.of(85.1d, 63.6d, 74.35d),
+            List.of(141.2d, -148.7d, 176.25d),
+            List.of(-28.1d, -169.3d, -98.7d),
+            List.of(-170.4d, -108.4d, -139.4d),
+            List.of(54.0d, 16.2d, 35.1d),
+            //List.of(-101.3d, 1.9d, -49.7d),
+            //List.of(111.4d, -177.7d, 146.85d),
+            List.of(-100.6d, 32.1d, -34.25d));
+
+    for (List<Double> l : list) {
+      var a = new GeoPoint(0d, l.get(0));
+      var b = new GeoPoint(0d, l.get(1));
+      assertEquals(new GeoPoint(0d, l.get(2)), a.average(b));
+    }
   }
-  @Test void two() {
-    var a= new GeoPoint(0d, 60d);
-    var b= new GeoPoint(0d, -150d);
-    assertEquals(new GeoPoint(0d,135), a.average(b));
-  }
+
 
 }
