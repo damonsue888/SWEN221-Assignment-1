@@ -134,4 +134,17 @@ class Part1 {
   @Test void geoPointIsRecord(){
     assertTrue(new GeoPoint(0,0) instanceof Record);
   }
+
+  // Own Tests
+  @Test void one() {
+    var a= new GeoPoint(0d, 30d);
+    var b= new GeoPoint(0d, -120d);
+    assertEquals(new GeoPoint(0d,-45d), a.average(b));
+  }
+  @Test void two() {
+    var a= new GeoPoint(0d, 60d);
+    var b= new GeoPoint(0d, -150d);
+    assertEquals(new GeoPoint(0d,135), a.average(b));
+  }
+
 }

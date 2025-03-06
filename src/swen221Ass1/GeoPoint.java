@@ -8,10 +8,15 @@ public record GeoPoint(double latitude, double longitude) {
 
     private boolean isLatitudeValid(double latitude) {return latitude >= -90 && latitude <= 90;}
 
-    private boolean isLongitudeValid(double longitude) {return longitude >= -180 && longitude <= 180;}
+    private boolean isLongitudeValid(double longitude) {return longitude >= -180 && longitude < 180;}
 
-    public GeoPoint average(GeoPoint geoPoint) {
-        return new GeoPoint((latitude + geoPoint.latitude()) / 2, (longitude + geoPoint.longitude) / 2);
+    private int offsetForAntimeridian(GeoPoint otherPoint) {
+        return Math.abs(longitude - otherPoint.longitude()) > 180 ? -180 : 0;
+    }
+
+    public GeoPoint average(GeoPoint otherPoint) {
+        return new GeoPoint((latitude + otherPoint.latitude()) / 2,
+                (longitude + otherPoint.longitude()) / 2 + offsetForAntimeridian(otherPoint));
     }
     @Override
     public String toString() {
