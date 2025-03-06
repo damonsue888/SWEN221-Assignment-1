@@ -7,7 +7,7 @@ public record GeoBox(GeoPoint ne, GeoPoint sw) {
     public GeoBox {
         Objects.requireNonNull(ne, "NorthEast (ne) cannot be null");
         Objects.requireNonNull(sw, "SouthWest (sw) cannot be null");
-        if (!GeoValidation.isValidGeoBox(ne, sw)) throw new IllegalArgumentException();
+        if (!GeoBoxValidator.isValidGeoBox(ne, sw)) throw new IllegalArgumentException();
     }
 
     public GeoPoint nw() {return new GeoPoint(ne.latitude(), sw.longitude());}

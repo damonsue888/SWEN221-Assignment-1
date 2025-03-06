@@ -6,6 +6,8 @@ import static swen221Ass1.Part1.illegal;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import java.util.List;
+
 class Part2 {
 
   //making a method returning reusable data can be better than storing the data

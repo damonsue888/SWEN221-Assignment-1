@@ -2,11 +2,7 @@ package swen221Ass1;
 
 public record GeoPoint(double latitude, double longitude) {
 
-    public GeoPoint {
-        if (!(GeoValidation.isValidLat(latitude) && GeoValidation.isValidLong(longitude))) {
-            throw new IllegalArgumentException();
-        }
-    }
+    public GeoPoint {if (!GeoPointValidator.validate(latitude, longitude)) throw new IllegalArgumentException();}
 
     private double distThroughMeridian(double otherLongitude) {return Math.abs(longitude - otherLongitude);}
 
