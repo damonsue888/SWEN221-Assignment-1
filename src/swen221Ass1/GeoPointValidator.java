@@ -1,6 +1,6 @@
 package swen221Ass1;
 
-public class GeoPointValidator {
+public final class GeoPointValidator {
     private static final int ABS_BOX_LAT_MAX = 80;
     private static final int LAT_ABS_MAX = 90;
     private static final int LONG_MIN = -180;

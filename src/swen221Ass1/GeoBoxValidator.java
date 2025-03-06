@@ -1,6 +1,6 @@
 package swen221Ass1;
 
-public class GeoBoxValidator {
+public final class GeoBoxValidator {
     private static final int MAX_DEGREE_DIFFERENCE = 30;
     private static final int MAX_NORMALISED_LONG = 360;
     private GeoBoxValidator() {} // prevent instantiation
