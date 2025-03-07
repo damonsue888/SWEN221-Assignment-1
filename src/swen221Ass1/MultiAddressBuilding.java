@@ -12,11 +12,10 @@ public record MultiAddressBuilding(GeoBox boundingBox, Address primaryAddress, S
         Objects.requireNonNull(boundingBox, "Building boundingBox cannot be null");
         Objects.requireNonNull(primaryAddress, "Building primary address cannot be bull");
         Objects.requireNonNull(secondaryAddresses, "Building secondary addresses cannot be null");
-        if (secondaryAddresses.isEmpty()) throw new IllegalArgumentException();
         secondaryAddresses = new HashSet<>(secondaryAddresses);
-//        if (secondaryAddresses.isEmpty() || geoBoxNotCoveringAllAddresses(allAddresses())) {
-//            throw new IllegalArgumentException();
-//        }
+        if (secondaryAddresses.isEmpty() || geoBoxNotCoveringAllAddresses(boundingBox, allAddresses())) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private Set<Address> allAddresses() {

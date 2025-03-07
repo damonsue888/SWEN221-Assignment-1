@@ -141,5 +141,24 @@ class Part2 {
     GeoBox box = new GeoBox(one(),zero());
     assertEquals(new GeoPoint(1d,0d),box.nw());
   }
+
+  // own tests
+  @Test void test() {
+    new GeoBox(new GeoPoint(1d,-10d),new GeoPoint(0d, -15d));
+    new GeoBox(new GeoPoint(0d,20d),new GeoPoint(0d, -10d));
+    new GeoBox(new GeoPoint(0d,15d),new GeoPoint(0d, 0d));
+    new GeoBox(new GeoPoint(0d,0d),new GeoPoint(0d, 0d));
+    new GeoBox(new GeoPoint(0d,90d),new GeoPoint(0d, 70d));
+    new GeoBox(new GeoPoint(0d,-179d),new GeoPoint(0d, 179d));
+    new GeoBox(new GeoPoint(0d,-177d),new GeoPoint(0d, -178d));
+
+    illegal(() -> new GeoBox(new GeoPoint(0d,0.1d),new GeoPoint(0d, -30d)));
+    illegal(() -> new GeoBox(new GeoPoint(0d,0d),new GeoPoint(0d, -31d)));
+    illegal(() -> new GeoBox(new GeoPoint(0d,50d),new GeoPoint(0d, 2d)));
+    illegal(() -> new GeoBox(new GeoPoint(0d,-150d),new GeoPoint(0d, 170d)));
+
+
+
+  }
 }
 

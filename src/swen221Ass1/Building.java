@@ -16,7 +16,7 @@ public interface Building {
 
     default Set<Address> secondaryAddresses() {return Set.of();}
 
-    default boolean geoBoxNotCoveringAllAddresses(Set<Address> addresses) {
-        return true;
+    default boolean geoBoxNotCoveringAllAddresses(GeoBox boundingBox, Set<Address> addresses) {
+        return addresses.stream().allMatch(address -> boundingBox.overlaps(address.street().boundingBox()));
     }
 }
