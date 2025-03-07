@@ -166,4 +166,10 @@ class Part4 {
   @Test void crossTall(){ overlapOk(box(2, 0.75, -1, 0.25)); }
 
   @Test void crossLarge(){ overlapOk(box(0.75, 2, 0.25, -1)); }
+
+  @Test void crossOverAntimeridian(){
+    Building.of(new GeoBox(new GeoPoint(30, -175), new GeoPoint(1, 178)),
+            new Address(new Street(new GeoBox(new GeoPoint(20, -170), new GeoPoint(4, 168)),
+                    "Name", 2), new City("Wellington", 439102), "3L"));
+  }
 }

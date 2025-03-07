@@ -8,8 +8,7 @@ public final class GeoBoxValidator {
 
     private static boolean isValidSpan(double span) {return span <= MAX_DEGREE_DIFFERENCE && span >= 0;}
     private static boolean longsValid(GeoPoint ne, GeoPoint sw) {
-        double diff = ne.longitude() - sw.longitude() % 360;
-        return isValidSpan(diff + (diff < 0 ? 360 : 0));
+        return isValidSpan((ne.longitude() - sw.longitude() + 360) % 360);
     }
 
     public static boolean isValidGeoBox(GeoPoint ne, GeoPoint sw) {

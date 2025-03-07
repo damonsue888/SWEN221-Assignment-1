@@ -8,7 +8,7 @@ public record SingleAddressBuilding(GeoBox boundingBox, Address primaryAddress) 
         Objects.requireNonNull(boundingBox, "Building boundingBox cannot be null");
         Objects.requireNonNull(primaryAddress, "Building primary address cannot be bull");
         if (geoBoxNotCoveringAllAddresses(boundingBox, Set.of(primaryAddress))) {
-            throw new IllegalArgumentException("GeoBox must overlap the primary address");
+            throw new IllegalArgumentException("SingleAddressBuilding doesn't meet the requirements");
         }
     }
 }

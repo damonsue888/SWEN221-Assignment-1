@@ -1,6 +1,5 @@
 package swen221Ass1;
 
-import java.util.Objects;
 import java.util.Set;
 
 public interface Building {
@@ -17,6 +16,6 @@ public interface Building {
     default Set<Address> secondaryAddresses() {return Set.of();}
 
     default boolean geoBoxNotCoveringAllAddresses(GeoBox boundingBox, Set<Address> addresses) {
-        return addresses.stream().allMatch(address -> boundingBox.overlaps(address.street().boundingBox()));
+        return !addresses.stream().allMatch(address -> boundingBox.overlaps(address.street().boundingBox()));
     }
 }
