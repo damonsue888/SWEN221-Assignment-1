@@ -1,5 +1,6 @@
 package swen221Ass1;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -19,7 +20,7 @@ public final class City {
     // getters
     public String name() {return name;}
     public int population() {return population;}
-    public Set<Street> streets() {return streets;}
+    public Set<Street> streets() {return Collections.unmodifiableSet(streets);}
 
     // setter
     public void population(int population) {

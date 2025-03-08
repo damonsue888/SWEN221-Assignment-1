@@ -141,6 +141,8 @@ class Part1 {
   // Own Tests
   @Test void tests() {
     List<List<Double>> list = List.of(List.of(30d, -120d, -45d),
+            List.of(-32d, 150d, -121d),
+            List.of(-28d, 150d, 61d),
             List.of(60d, -150d, 135d),
             List.of(-60d, 150d, -135d),
             List.of(50.2d, -171.0d, 119.6d),

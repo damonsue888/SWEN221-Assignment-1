@@ -6,9 +6,7 @@ public interface Building {
     GeoBox boundingBox();
     Address primaryAddress();
 
-    static Building of(GeoBox boundingBox, Address address) {
-        return new SingleAddressBuilding(boundingBox, address);
-    }
+    static Building of(GeoBox boundingBox, Address address) {return new SingleAddressBuilding(boundingBox, address);}
     static Building of(GeoBox boundingBox, Address address, Set<Address> addresses) {
         return new MultiAddressBuilding(boundingBox, address, addresses);
     }
