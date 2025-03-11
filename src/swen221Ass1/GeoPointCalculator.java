@@ -30,7 +30,7 @@ public final class GeoPointCalculator {
      * @return The adjustment value (+180 or -180) to correctly adjust the average longitude value.
      */
     private static int calculateLongitudeAdjustment(double longitude, double otherLongitude) {
-        return longitude > otherLongitude ? 180 : -180;
+        return longitude + otherLongitude >= 0 ? -180 : 180;
     }
 
     /**
@@ -43,7 +43,7 @@ public final class GeoPointCalculator {
     public static GeoPoint average(GeoPoint geoPoint, GeoPoint otherPoint) {
         double avgLat = (geoPoint.latitude() + otherPoint.latitude()) / 2;
         double avgLon = (geoPoint.longitude() + otherPoint.longitude()) / 2;
-        
+
         // Adjust the longitude if the midpoint involves crossing the antimeridian
         if (doesCrossAntimeridian(geoPoint.longitude(), otherPoint.longitude())) {
             avgLon += calculateLongitudeAdjustment(geoPoint.longitude(), otherPoint.longitude());
