@@ -14,7 +14,6 @@ public record Address(Street street, City city, String number) {
 
     /**
      * Constructs a new Address instance.
-     * Ensures that all fields are non-null.
      *
      * @param street The {@link Street} where the address is located (must not be null).
      * @param city The {@link City} where the address is located (must not be null).

@@ -37,6 +37,7 @@ public final class GeoBoxValidator {
 
     /**
      * Ensures that the span is within the allowed degree difference.
+     * A positive span is required since the NE corner must be truly North-East of the SW corner.
      *
      * @param span The difference in latitude or longitude.
      * @return {@code true} if the span is valid, {@code false} otherwise.

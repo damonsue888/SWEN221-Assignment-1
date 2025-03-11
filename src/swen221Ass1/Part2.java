@@ -144,6 +144,8 @@ class Part2 {
 
   // own tests
   @Test void test() {
+    new GeoBox(new GeoPoint(1d,-10d),new GeoPoint(1d, -10d));
+
     new GeoBox(new GeoPoint(1d,-10d),new GeoPoint(0d, -15d));
     new GeoBox(new GeoPoint(0d,20d),new GeoPoint(0d, -10d));
     new GeoBox(new GeoPoint(0d,15d),new GeoPoint(0d, 0d));

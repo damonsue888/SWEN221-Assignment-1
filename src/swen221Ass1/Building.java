@@ -22,7 +22,8 @@ public interface Building {
     Address primaryAddress();
 
     /**
-     * Creates a building with a single primary address
+     * Creates a building with a single primary address.
+     * THe returned instance does not support multiple addresses.
      *
      * @param boundingBox The geographical bounding box of the building.
      * @param address The primary address of the building.
@@ -55,7 +56,7 @@ public interface Building {
     }
 
     /**
-     * Checks whether the buildings bounding box overlaps with the bounding boxes of all given addresses.
+     * Checks whether the buildings bounding box overlaps with the bounding boxes of the streets for all given addresses.
      * Required to be {@code true} for a valid building instance.
      *
      * @param boundingBox The bounding box of the building to check against.

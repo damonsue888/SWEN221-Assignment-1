@@ -16,11 +16,9 @@ public final class GeoBoxCalculator {
      * @param longOne The longitude of the first point.
      * @param longTwo The longitude of the second point.
      * @return The normalised longitude difference in the range [0, 360). A value less than 180 indicates that longOne
-     * is West of longTwo, while a value greater than 180 indicates that longOne is East of longTwo.
+     * is East of longTwo, while a value greater than 180 indicates that longOne is West of longTwo.
      */
     public static double normalisedLongitudeDifference(double longOne, double longTwo) {
-        // Calculates the longitude difference between the leftmost point of otherBox,
-        // and the rightmost point of geoBox
         double rawLongitudeDifference = longOne - longTwo;
 
         // Handles wrapping around the anti meridian.
@@ -36,6 +34,7 @@ public final class GeoBoxCalculator {
      * @return {@code true} if geoBox is entirely to the left of otherBox, {@code false} otherwise.
      */
     private static boolean isLeftOf(GeoBox geoBox, GeoBox otherBox) {
+        // A longitude difference less than 180 means GeoBox is fully to the left of otherBox
         return normalisedLongitudeDifference(otherBox.sw().longitude(), geoBox.ne().longitude()) < 180;
     }
 
@@ -44,10 +43,10 @@ public final class GeoBoxCalculator {
      *
      * @param geoBox The first bounding box.
      * @param otherBox The second bounding box.
-     * @return {@code true} if geoBox is entirely to above otherBox, {@code false} otherwise.
+     * @return {@code true} if geoBox is entirely above otherBox, {@code false} otherwise.
      */
     private static boolean isAbove(GeoBox geoBox, GeoBox otherBox) {
-        return geoBox.sw().latitude() > otherBox.ne().latitude();
+        return geoBox.sw().latitude() >= otherBox.ne().latitude();
     }
 
     /**
@@ -58,7 +57,9 @@ public final class GeoBoxCalculator {
      * @return {@code true} if the two boxes overlap, {@code false} otherwise.
      */
     public static boolean overlaps(GeoBox geoBox, GeoBox otherBox) {
-        return !(isLeftOf(geoBox, otherBox) || isLeftOf(otherBox, geoBox) ||
-                isAbove(geoBox, otherBox) || isAbove(otherBox, geoBox));
+        return !(isLeftOf(geoBox, otherBox) ||
+                isLeftOf(otherBox, geoBox) ||
+                isAbove(geoBox, otherBox) ||
+                isAbove(otherBox, geoBox));
     }
 }
