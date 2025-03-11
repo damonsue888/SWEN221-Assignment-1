@@ -29,6 +29,7 @@ class Part3 {
   @Test void streetIntLength() {
     @SuppressWarnings("unused")
     int length= new Street(box(),"Willis street",2300).length();
+    System.out.println(city());
     //it would not compile if it is not an int/Integer.
   }
   @Test void streetDataAccess1() {
